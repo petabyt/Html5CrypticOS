@@ -6,12 +6,14 @@ var mouse = {
 	x:0,
 	y:0,
 	down:false,
-	stopDragging:"none"
+	stopDragging:"none",
+	offsetX:0,
+	offsetY:0
 }
 
 // System stuffs (no touchy)
 var system = {
-	unlocked:false,
+	unlocked:true,
 	fileSystem:"not ready"
 }
 
@@ -68,6 +70,25 @@ setInterval(function() {
 		c.lineTo(15,canvas.height - 15);
 		c.stroke();
 
+		// Do calculations for the time, and draw it to the desktop.
+		c.fillStyle = "black";
+		c.font = "20px Arial";
+		var d = new Date();
+		var time = ["","",""];
+		if (d.getHours() > 12) {
+			time[2] = "PM"
+			time[0] = d.getHours() - 12;
+		} else {
+			time[2] = "AM";
+			time[0] = d.getHours();
+		}
+		if (String(d.getMinutes()).length == 1) {
+			time[1] = "0" + String(d.getMinutes());
+		} else {
+			time[1] = String(d.getMinutes());
+		}
+		c.fillText(time[0] + ":" + time[1] + " " + time[2],canvas.width - 90, canvas.height - 18);
+
 		// Windows
 		for (var i = 0; i < windowsOpen.length; i++) {
 			// Data stuffs
@@ -86,6 +107,12 @@ setInterval(function() {
 			// Draw the basics of the window
 			c.lineWidth = "2";
 			c.strokeStyle = "black";
+			if (mouse.down && mouse.stopDragging == i) {
+				c.fillStyle = "lightgrey";
+				c.globalAlpha = 0.5;
+				c.fillRect(windowsOpen[i][1] - 5,windowsOpen[i][2] + 5,windowsOpen[i][3],windowsOpen[i][4]);
+				c.globalAlpha = 1.0;
+			}
 			c.fillStyle = "white";
 			c.fillRect(windowsOpen[i][1],windowsOpen[i][2],windowsOpen[i][3],windowsOpen[i][4]);
 			c.fillStyle = "lightgrey";
@@ -97,7 +124,7 @@ setInterval(function() {
 
 			if (windowsOpen[i][0] == "welcome") {
 				windowData.title = "Welcome to CrypticOS!";
-				windowData.data = "CrypticOS Release 1";
+				windowData.data = "Cool stuff will come soon.";
 			}
 
 			// Resume drawing the window
@@ -105,9 +132,9 @@ setInterval(function() {
 			c.fillText(windowData.data,Number(windowsOpen[i][1]) + 3,Number(windowsOpen[i][2]) + 53);
 
 			// Window dragging
-			if (mouse.down && mouse.stopDragging == i) {
-				windowsOpen[i][1] = mouse.x - 250;
-				windowsOpen[i][2] = mouse.y - 15;
+			if (mouse.down && mouse.stopDragging == i && system.unlocked) {
+				windowsOpen[i][1] = mouse.x + mouse.offsetX;
+				windowsOpen[i][2] = mouse.y + mouse.offsetY;
 			}
 		}
 
@@ -118,7 +145,7 @@ setInterval(function() {
 
 
 		// Start Menu Detector
-		if (mouse.x > 5 && mouse.x < 45 && mouse.x > canvas.height - 45 && mouse.x < canvas.height - 5) {
+		if (mouse.x > 5 && mouse.x < 45 && mouse.y > canvas.height - 45 && mouse.y < canvas.height - 5) {
 			hover.startButton = true;
 		} else {
 			hover.startButton = false;
@@ -129,8 +156,7 @@ setInterval(function() {
 		c.fillRect(0,0,canvas.width,canvas.height);
 		c.fillStyle = "white";
 		c.font = "30px Arial";
-		c.fillText("CrypticOS Login",canvas.width / 2 - 120,100);
-		c.fillText("Unfinished, press any key.",canvas.width / 2 - 180,140);
+		c.fillText("Welcome Back, user!",canvas.width / 2 - 130,100);
 	}
 
 
@@ -138,12 +164,17 @@ setInterval(function() {
 	if (settings.techyInfo) {
 		c.font = "15px Arial";
 		c.fillStyle = "white";
-		c.fillText("CrypticOS Release 1",3,15);
+		c.fillText("CrypticOS HTML5 Test",3,15);
 		c.fillText("Mouse X: " + mouse.x + " Mouse Y: " + mouse.x,3,30);
 		c.fillText("Mouse Down: " + mouse.down,3,45);
 		c.fillText("Current Window Dragging: " + mouse.stopDragging,3,60);
 	}
-},1);
+
+	// Check for clicks
+	if (mouse.down) {
+		system.unlocked = true;
+	}
+},.1);
 
 // Get mouse X and Y
 function getMouse(event) {
@@ -153,7 +184,6 @@ function getMouse(event) {
 
 // Handle Key Presses
 document.body.onkeydown = function(e) {
-	system.unlocked = true;
 	if (e.key == "F3") {
 		e.preventDefault();
 		if (settings.techyInfo) {
@@ -164,6 +194,7 @@ document.body.onkeydown = function(e) {
 	}
 }
 
+// Easy Function to open window
 function openWindow(type) {
 
 }
