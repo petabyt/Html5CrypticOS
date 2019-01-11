@@ -13,7 +13,7 @@ var mouse = {
 
 // System stuffs (no touchy)
 var system = {
-	unlocked:true,
+	unlocked:false,
 	fileSystem:"not ready"
 }
 
