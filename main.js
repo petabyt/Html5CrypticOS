@@ -102,6 +102,8 @@ setInterval(function() {
 			if (mouse.x > windowsOpen[i][1] && mouse.x < windowsOpen[i][1] + Number(windowsOpen[i][3]) && mouse.y > windowsOpen[i][2] && mouse.y < windowsOpen[i][2] + 30) {
 				windowData.mouseOverTitle = true;
 				mouse.stopDragging = i;
+				mouse.offsetX = windowsOpen[i][1]-mouse.x;
+				mouse.offsetY = windowsOpen[i][2]-mouse.xy;
 			}
 
 			// Draw the basics of the window
