@@ -103,7 +103,7 @@ setInterval(function() {
 				windowData.mouseOverTitle = true;
 				mouse.stopDragging = i;
 				mouse.offsetX = windowsOpen[i][1]-mouse.x;
-				mouse.offsetY = windowsOpen[i][2]-mouse.xy;
+				mouse.offsetY = windowsOpen[i][2]-mouse.y;
 			}
 
 			// Draw the basics of the window
