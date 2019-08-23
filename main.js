@@ -142,13 +142,19 @@ setInterval(function() {
 			c.strokeStyle = "red";
 			c.lineWidth = "2";
 			c.beginPath();
-			c.moveTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 15,windowsOpen[i][2] + 10);
-			c.lineTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 5,windowsOpen[i][2] + 20);
+			c.moveTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 20,windowsOpen[i][2] + 10);
+			c.lineTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 10,windowsOpen[i][2] + 20);
 			c.stroke();
 			c.beginPath();
-			c.moveTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 5,windowsOpen[i][2] + 10);
-			c.lineTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 15,windowsOpen[i][2] + 20);
+			c.moveTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 10,windowsOpen[i][2] + 10);
+			c.lineTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 20,windowsOpen[i][2] + 20);
 			c.stroke();
+			// Get if the X is clicked
+			if(mouse.x >= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 20 && mouse.x <= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 10 && mouse.y <= windowsOpen[i][2] + 20 && mouse.y >=windowsOpen[i][2] + 10) {
+				windowsOpen.pop(i);
+				i--;
+				continue;
+			}
 			
 			c.strokeStyle = "black";
 			
