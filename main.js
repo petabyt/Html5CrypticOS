@@ -169,7 +169,7 @@ setInterval(function() {
 			// Get if the X is clicked
 			if(mouse.down && mouse.x >= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 20 && mouse.x <= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 10 && mouse.y <= windowsOpen[i][2] + 20 && mouse.y >=windowsOpen[i][2] + 10) {
 				console.log(windowsOpen.pop(i));
-				i--;
+				//i--;
 				continue;
 			}
 			
