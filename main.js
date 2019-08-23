@@ -228,7 +228,7 @@ setInterval(function() {
 	if (mouse.down) {
 		system.unlocked = true;
 	}
-},10;
+},10);
 
 // Get mouse X and Y
 function getMouse(event) {
