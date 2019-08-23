@@ -41,7 +41,7 @@ function renderButton(x,y,txt,winOut) {
 	c.font = "15px Arial";
 	c.fillStyle = "black";
 	c.fillText(txt,x,y+100);
-	if(mouse.up && mouse.down && mouse.x>= x && mouse.y>=y && mouse.x<=x+50&&mouse.y<-y+50) {
+	if(mouse.up && mouse.down && mouse.x>= x && mouse.y>=y && mouse.x<=x+50 && mouse.y<=y+50) {
 	windowsOpen.push(winOut);
 		mouse.up = false;
 	}
