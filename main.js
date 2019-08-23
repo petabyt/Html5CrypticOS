@@ -103,8 +103,8 @@ setInterval(function() {
 			if(windowsOpen[i][1]<=0) {
 				windowsOpen[i][1] = 1;
 			}
-			if(windowsOpen[i][2]>=canvas.height-Number(windowsOpen[i][4])) {
-				windowsOpen[i][2] = canvas.height-1-Number(windowsOpen[i][4]);
+			if(windowsOpen[i][2]>=canvas.height-Number(windowsOpen[i][4])-50) {
+				windowsOpen[i][2] = canvas.height-51-Number(windowsOpen[i][4]);
 			}
 			if(windowsOpen[i][1]>=canvas.width-Number(windowsOpen[i][3])) {
 				windowsOpen[i][1] = canvas.width-1-Number(windowsOpen[i][3]);
