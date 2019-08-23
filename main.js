@@ -121,16 +121,7 @@ setInterval(function() {
 			}
 
 			// Draw the basics of the window
-			c.strokeStyle = "red";
-			c.lineWidth = "2";
-			c.beginPath();
-			c.moveTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 15,windowsOpen[i][1] + 10);
-			c.lineTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 5,windowsOpen[i][1] + 20);
-			c.stroke();
-			c.beginPath();
-			c.moveTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 5,windowsOpen[i][1] + 10);
-			c.lineTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 15,windowsOpen[i][1] + 20);
-			c.stroke();
+			
 			c.lineWidth = "2";
 			c.strokeStyle = "black";
 			if (mouse.down && mouse.stopDragging == i) {
@@ -147,7 +138,20 @@ setInterval(function() {
 			c.strokeRect(windowsOpen[i][1],windowsOpen[i][2],windowsOpen[i][3],30);
 			c.fillStyle = "black";
 			c.font = "25px Arial";
-
+			
+			c.strokeStyle = "red";
+			c.lineWidth = "2";
+			c.beginPath();
+			c.moveTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 15,windowsOpen[i][2] + 10);
+			c.lineTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 5,windowsOpen[i][2] + 20);
+			c.stroke();
+			c.beginPath();
+			c.moveTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 5,windowsOpen[i][2] + 10);
+			c.lineTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 15,windowsOpen[i][2] + 20);
+			c.stroke();
+			
+			c.strokeStyle = "black";
+			
 			if (windowsOpen[i][0] == "welcome") {
 				windowData.title = "Welcome to CrypticOS!";
 				windowData.data = "Cool stuff will come soon.";
