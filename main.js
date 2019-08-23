@@ -1,6 +1,5 @@
 var canvas = document.getElementById("canvas");
 var c = canvas.getContext("2d");
-
 // Mouse
 var mouse = {
 	x:0,
@@ -8,7 +7,8 @@ var mouse = {
 	down:false,
 	stopDragging:"none",
 	offsetX:0,
-	offsetY:0
+	offsetY:0,
+	up: true
 }
 
 // System stuffs (no touchy)
@@ -32,7 +32,23 @@ var hover = {
 // Windows Open
 var windowsOpen = [
 	["welcome",window.innerWidth / 2 - 250,window.innerHeight / 2 - 300,"500","500"]
-]
+];
+function renderButton(x,y,txt,winOut) {
+	c.lineWidth = "2";
+	c.strokeStyle = "black";
+	c.fillStyle = "white"
+	c.fillRect(x,y,x+50,y+50);
+	c.font = "15px Arial";
+	c.fillStyle = "black";
+	c.fillText(txt,x,y+100);
+	if(mouse.up && mouse.down && mouse.x>= x && mouse.y>=y && mouse.x<=x+50&&mouse.y<-y+50) {
+	windowsOpen.push(winOut);
+		mouse.up = false;
+	}
+	if(!mouse.down) {
+	mouse.up = true;
+	}
+}
 
 // Main Loop
 setInterval(function() {
@@ -88,6 +104,7 @@ setInterval(function() {
 			time[1] = String(d.getMinutes());
 		}
 		c.fillText(time[0] + ":" + time[1] + " " + time[2],canvas.width - 90, canvas.height - 18);
+		renderButton(10,10,"Welcome.txt",["welcome",window.innerWidth / 2 - 250,window.innerHeight / 2 - 300,"500","500"]);
 
 		// Windows
 		for (var i = 0; i < windowsOpen.length; i++) {
