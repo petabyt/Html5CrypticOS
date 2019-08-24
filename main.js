@@ -257,6 +257,10 @@ function openWindow(type) {
 }
 function close(winItem) {
 	console.log(winItem);
+	if(winItem==0) {
+	windowsOpen.shift()
+	} else {
 windowsOpen.splice(winItem-0,1);
+	}
 	console.log(windowsOpen);
 }
