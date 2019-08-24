@@ -168,7 +168,7 @@ setInterval(function() {
 			c.stroke();
 			// Get if the X is clicked
 			if(mouse.up && mouse.down && mouse.x >= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 20 && mouse.x <= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 10 && mouse.y <= windowsOpen[i][2] + 20 && mouse.y >=windowsOpen[i][2] + 10) {
-				console.log(windowsOpen.splice(i-1,1)[0][1]);
+				console.log(windowsOpen.splice(i,1)[0][1]);
 				console.log(i);
 				mouse.up = false;
 				//i--;
