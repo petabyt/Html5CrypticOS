@@ -191,7 +191,7 @@ setInterval(function() {
 				mouse.up = false;
 				//i--;
 				//continue;
-				break;
+				//break;
 			}
 		}
 
