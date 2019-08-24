@@ -257,6 +257,6 @@ function openWindow(type) {
 }
 function close(winItem) {
 	console.log(winItem);
-windowsOpen.splice(winItem-1,1);
+windowsOpen.splice(winItem-0,1);
 	console.log(windowsOpen);
 }
