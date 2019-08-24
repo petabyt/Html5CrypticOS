@@ -166,14 +166,7 @@ setInterval(function() {
 			c.moveTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 10,windowsOpen[i][2] + 10);
 			c.lineTo(windowsOpen[i][1] + Number(windowsOpen[i][3]) - 20,windowsOpen[i][2] + 20);
 			c.stroke();
-			// Get if the X is clicked
-			if(mouse.up && mouse.down && mouse.x >= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 20 && mouse.x <= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 10 && mouse.y <= windowsOpen[i][2] + 20 && mouse.y >=windowsOpen[i][2] + 10) {
-				close(i);
-				mouse.up = false;
-				//i--;
-				//continue;
-				break;
-			}
+			
 			
 			c.strokeStyle = "black";
 			
@@ -190,6 +183,15 @@ setInterval(function() {
 			if (mouse.down && mouse.stopDragging == i && system.unlocked) {
 				windowsOpen[i][1] = mouse.x + mouse.offsetX;
 				windowsOpen[i][2] = mouse.y + mouse.offsetY;
+			}
+			
+			// Get if the X is clicked
+			if(mouse.up && mouse.down && mouse.x >= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 20 && mouse.x <= windowsOpen[i][1] + Number(windowsOpen[i][3]) - 10 && mouse.y <= windowsOpen[i][2] + 20 && mouse.y >=windowsOpen[i][2] + 10) {
+				close(i);
+				mouse.up = false;
+				//i--;
+				//continue;
+				break;
 			}
 		}
 
